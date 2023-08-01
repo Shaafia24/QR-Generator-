@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR generator and reader By sajitha and shaafia</title>
+    <!--- QR Code Generator CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Font Awesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  </div>
+  <div class="container">
+  
+   <div class="reader_box">
+    <form action="#">
+      <input type="file" hidden>
+      <img src="#" alt="qr-code">
+      <div class="reader_heading">
+        <i class="fas fa-cloud-upload-alt fa-spin" style="color: #A0D6B4;"></i></i>
+        <p>Choose your QR code image and decode it!!<br></p>
+        <div id="loader"></div>
+      </div>
+    </form>
+    <div class="reader_result">
+      <textarea spellcheck="false" disabled></textarea>
+      <div class="reader_buttons">
+         <button class="closeBtn">Exit</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="generator_box">
+    <input type="text" id="userInput" placeholder="Type your text or URL" />
+    <div class="show_qr"></div>
+    <div class="generator_buttons">
+      <button id="submitBtn" disabled>Click here to generate</button>
+      <button id="cancelBtn">Exit</button>
+      <a href="#" id="downloadBtn">Download it</a>
+    </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

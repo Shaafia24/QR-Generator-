@@ -1,0 +1,312 @@
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+:root {
+    /* Colors */ 
+    --first_color :#ffffff; 
+    --second_color: #C36241;  
+    --third_color:#A0D6B4; 
+    --fourth_color:#C36241;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'PT Serif', serif;
+}
+
+  body {
+    background:var(--third_color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo img{
+    width: 20em;
+    height: 20em;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  } 
+  .container {
+    width:100vw;
+    display: flex;
+    margin: 15em 0 5em 0;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+
+
+
+  .reader_box{
+    height: 16.875em;
+    position: relative;
+    width:26.25em;
+    border-radius:0.4375em;
+    margin: 0 1em 0 1em;
+    background:var(--second_color);
+    padding: 1em ;
+    transition: height 0.2s ease;
+    box-shadow: 0 0.625em 1.25em rgba(0,0,0,0.1);
+  }
+  .reader_box::before{
+    content:'QR-Reader';
+    position: absolute;
+    font-size: 2.5em;
+    font-weight: 700;
+    top:-2.5em;
+    left:2em ;
+    color:var(--second_color);
+  }
+  .reader_box.active{
+    height:32.812em;
+  }
+  .drop_active {
+    border: 0.2em dashed var(--second_color);
+  }
+  .reader_box form{
+    height:15em;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    background: var(--first_color);
+    align-items: center;
+    justify-content: center;
+    transition: height 0.2s ease;
+  }
+  .reader_box.active form{
+    height:14.0625em;
+    pointer-events: none;
+  }
+  form img{
+    display: none;
+    max-width: 9.25em;
+  }
+  .reader_box.active form img{
+    display: block;
+  }
+  .reader_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .reader_box.active form .reader_heading{
+    display: none;
+  }
+  form .reader_heading i{
+    color: var(--second_color);
+    font-size:3.4375em;
+  }
+  form .reader_heading p{
+    color: var(--second_color);
+    margin-top:0.9375em;
+    font-size: 1em;
+  }
+  .reader_box .reader_result{
+    opacity: 0;
+    margin-top: 1.5625em;
+    pointer-events: none;
+  }
+  .reader_box.active .reader_result{
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
+  }
+  .reader_result textarea{
+    width: 100%;
+    height: 8em;
+    outline: none;
+    resize: none;
+    color: var(--first_color);
+    font-size: 1.125em;
+    background: none;
+    border-radius: 0.3125em;
+    padding: 0.625em 0.9375em;
+    border: 0.0625em solid var(--first_color);
+  }
+  textarea::-webkit-scrollbar{
+    width: 0em;
+  }
+  textarea:hover::-webkit-scrollbar{
+    width: 0.3125em;
+  }
+  textarea:hover::-webkit-scrollbar-track{
+    background: none;
+  }
+  textarea:hover::-webkit-scrollbar-thumb{
+    background: var(--first_color);
+    border-radius: 0.5em;
+  }
+  .reader_result .reader_buttons{
+    display: flex;
+    margin-top: 1.25em;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .reader_buttons button{
+    height: 3.4375em;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    color: var(--second_color);
+    border-radius: 0.3125em;
+    background: var(--first_color);
+    transition: transform 0.3s ease;
+    width: calc(100% / 2 - 0.625em);
+  }
+  .reader_buttons button:hover {
+    color: var(--first_color);
+    background-color: var(--second_color);
+    font-weight: bold;
+    border: 0.0625em solid var(--first_color);
+    border-radius: 0.3125em;
+  }
+  .reader_buttons button:active{
+    transform: scale(0.95);
+  }
+  #loader {
+    background: #000 url(loading/loading.gif) no-repeat center center;
+    background-size:cover;
+    z-index: 100;
+    width:7em;
+    height:7em;
+    display: none;
+  }
+  
+
+  .generator_box {
+    background-color: var(--first_color);
+    height: auto;
+    margin: 0 1em 0 1em;
+    padding: 0em 3em 0em 3em;
+    width: 28em;
+    border: 1em solid var(--second_color);
+    border-radius: 0.6em;
+    box-shadow: 0 1.5em 3em rgba(3, 21, 55, 0.3);
+  }
+  .generator_box::before{
+    content:'QR-Generator';
+    position: relative;
+    font-size: 2.5em;
+    font-weight: 700;
+    top:-3em;
+    left:0.5em ;
+    color: var(--second_color);
+  }
+  #userInput {
+    width: 100%;
+    border: none;
+    color: var(--second_color);
+    border-bottom: 0.3468em solid var(--second_color);
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    outline: none;
+  }
+  ::placeholder{
+    opacity: 1;
+    color: var(--second_color);
+  }
+  .generator_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .generator_buttons button,
+  .generator_buttons a {
+    font-size: 1em;
+    padding: 0.8em 2em;
+    border-radius: 0.5em;
+    margin: 2.1em 0.5em 2.6em 0.5em;
+  }
+  .generator_buttons a:hover{
+    font-weight: bold;
+    transition: 0.9s;
+  }
+  #submitBtn:disabled {
+    background-color: transparent;
+    color:var(--fourth_color);
+    border: 0.18em solid var(--fourth_color);
+    pointer-events: none;
+  }
+  .generator_buttons button {
+    background-color: transparent;
+    color: var(--second_color);
+    border: 0.18em solid var(--second_color);
+  }
+  .generator_buttons button:hover {
+    background-color: var(--second_color);
+    color:var(--first_color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .generator_buttons a {
+    background-color: var(--second_color);
+    color: var(--first_color);
+    text-decoration: none;
+    border: 0.18em solid var(--second_color);
+  }
+  .show_qr {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.8em;
+  }
+  .hide {
+    display: none;
+  }
+
+  @media screen and (max-width: 931px) {
+    .reader_box {
+      margin: 5em 1em 8em 1em;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .logo img{
+      width: 16em;
+      height: 16em;
+    } 
+    .reader_box {
+      padding: 0.7em;
+      height: 16.25em;
+    }
+    .reader_box.active{
+      height: 32.5em;
+    }
+    .reader_box::before {
+      left:3em;
+    }
+    .generator_box {
+      padding: 0em 0.5em 0em 0.5em;
+      border: 0.5em solid var(--second_color);
+    }
+    .generator_box::before {
+      left:2em;
+    }
+  }
+  @media screen and (max-width: 350px) {
+    .reader_box::before {
+      left:2em;
+    }
+   .generator_box::before {
+      left:1em;
+   } 
+   .generator_buttons button,
+   .generator_buttons a {
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    margin: 2em 0.5em 1.6em 0.5em;
+   }
+   .show_qr img {
+      width: 8.5em;
+      height: 8.5em;
+   }
+  }
+  
